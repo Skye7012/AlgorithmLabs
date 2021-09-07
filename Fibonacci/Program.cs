@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace GenerateUniqueArray
 {
@@ -13,15 +14,15 @@ namespace GenerateUniqueArray
 		{
 			var was = DateTime.Now;
 
-			int[] maxShifts = new int[tries];
-
-			for(int i = 0; i < tries; i++)
+			List<BigInteger> integers = new List<BigInteger>() { 0, 1 };
+			
+			for(int i = 2; i < 1000; i++)
 			{
-				maxShifts[i] = GetShiftsOnMax();
-				Console.WriteLine($"Shifts in {i+1}th try = {maxShifts[i]}\n");
+				integers.Add(integers[i - 2] + integers[i - 1]);
+				Console.WriteLine(integers[i]+ "\n");
 			}
 
-			Console.WriteLine($"\n\nAverage Shifts = {maxShifts.Average()}");
+			Console.WriteLine("\n1000th = " + integers.Last());
 
 			Console.WriteLine(DateTime.Now - was);
 		}
@@ -34,7 +35,7 @@ namespace GenerateUniqueArray
 			{
 				res.Add(rnd.Next());
 				count++;
-				while(res.Count != count)
+				while (res.Count != count)
 				{
 					res.Add(rnd.Next());
 				}
@@ -53,7 +54,7 @@ namespace GenerateUniqueArray
 
 			foreach (var arr in array)
 			{
-				if(arr > max)
+				if (arr > max)
 				{
 					max = arr;
 					countMaxChanges++;
