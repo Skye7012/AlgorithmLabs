@@ -6,8 +6,8 @@ namespace GenerateUniqueArray
 {
 	static class Program
 	{
-		private const int length = 10000000; //10 000 000
-		private const int tries = 100;
+		private const int arrayLength = 10000000; //10 000 000
+		private const int tries = 10;
 		private static Random rnd = new Random();
 		private static void Main(string[] args)
 		{
@@ -23,14 +23,14 @@ namespace GenerateUniqueArray
 
 			Console.WriteLine($"\n\nAverage Shifts = {maxShifts.Average()}");
 
-			Console.WriteLine(DateTime.Now - was);
+			Console.WriteLine($"Executing Time =  {DateTime.Now - was}");
 		}
 		private static int[] GenerateUniqueArray()
 		{
-			HashSet<int> res = new HashSet<int>(length);
+			HashSet<int> res = new HashSet<int>(arrayLength);
 			int count = 0;
 
-			for (int i = 0; i < length; i++)
+			for (int i = 0; i < arrayLength; i++)
 			{
 				res.Add(rnd.Next());
 				count++;

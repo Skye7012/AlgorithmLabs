@@ -24,7 +24,7 @@ namespace GenerateUniqueArray
 
 			Console.WriteLine("\n1000th = " + integers.Last());
 
-			Console.WriteLine(DateTime.Now - was);
+			Console.WriteLine($"Executing Time =  {DateTime.Now - was}");
 		}
 		private static int[] GenerateUniqueArray()
 		{
