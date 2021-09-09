@@ -3,6 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>MaxShifts</AssemblyName>
+    <RootNamespace>MaxShifts</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Timer\Timer.csproj" />
+  </ItemGroup>
 
 </Project>

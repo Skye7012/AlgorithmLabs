@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateUniqueArray", "GenerateUniqueArray\GenerateUniqueArray.csproj", "{28424852-C55C-4D59-9BCB-0D158BCD0355}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateUniqueArray", "GenerateUniqueArray\GenerateUniqueArray.csproj", "{28424852-C55C-4D59-9BCB-0D158BCD0355}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fibonacci", "Fibonacci\Fibonacci.csproj", "{51168DA8-5896-410D-87AF-D710C8313171}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fibonacci", "Fibonacci\Fibonacci.csproj", "{51168DA8-5896-410D-87AF-D710C8313171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timer", "Timer\Timer.csproj", "{E792F532-F011-4F19-8738-DF402EF499E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{51168DA8-5896-410D-87AF-D710C8313171}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51168DA8-5896-410D-87AF-D710C8313171}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51168DA8-5896-410D-87AF-D710C8313171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E792F532-F011-4F19-8738-DF402EF499E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E792F532-F011-4F19-8738-DF402EF499E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E792F532-F011-4F19-8738-DF402EF499E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E792F532-F011-4F19-8738-DF402EF499E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

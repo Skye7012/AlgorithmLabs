@@ -1,67 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MyTimer;
+using System;
 using System.Linq;
 
-namespace GenerateUniqueArray
+namespace MaxShifts
 {
-	static class Program
+	public class Program
 	{
-		private const int arrayLength = 10000000; //10 000 000
-		private const int tries = 10;
-		private static Random rnd = new Random();
 		private static void Main(string[] args)
 		{
-			var was = DateTime.Now;
-
-			int[] maxShifts = new int[tries];
-
-			for(int i = 0; i < tries; i++)
+			using (var timer = new Timer())
 			{
-				maxShifts[i] = GetShiftsOnMax();
-				Console.WriteLine($"Shifts in {i+1}th try = {maxShifts[i]}\n");
-			}
+				const int tries = 10;
 
-			Console.WriteLine($"\n\nAverage Shifts = {maxShifts.Average()}");
+				int[] maxShifts = new int[tries];
 
-			Console.WriteLine($"Executing Time =  {DateTime.Now - was}");
-		}
-		private static int[] GenerateUniqueArray()
-		{
-			HashSet<int> res = new HashSet<int>(arrayLength);
-			int count = 0;
-
-			for (int i = 0; i < arrayLength; i++)
-			{
-				res.Add(rnd.Next());
-				count++;
-				while(res.Count != count)
+				for (int i = 0; i < tries; i++)
 				{
-					res.Add(rnd.Next());
+					maxShifts[i] = MaxShifts.GetMaxShifts();
+					Console.WriteLine($"Shifts in {i + 1}th try = {maxShifts[i]}\n");
 				}
+
+				Console.WriteLine($"\n\nAverage Shifts = {maxShifts.Average()}");
 			}
-
-			Console.WriteLine("Generate Done");
-			Console.WriteLine("Array Length = " + count);
-
-			return res.ToArray();
 		}
-		private static int GetShiftsOnMax()
-		{
-			int max = 0;
-			int countMaxChanges = 0;
-			var array = GenerateUniqueArray();
-
-			foreach (var arr in array)
-			{
-				if(arr > max)
-				{
-					max = arr;
-					countMaxChanges++;
-				}
-			}
-
-			return countMaxChanges;
-		}
-
 	}
 }
