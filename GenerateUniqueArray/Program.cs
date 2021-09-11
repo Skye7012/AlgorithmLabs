@@ -8,7 +8,7 @@ namespace MaxShifts
 		{
 			using (var timer = new Timer())
 			{
-				const int tries = 100;
+				const int tries = 10;
 				MaxShifts.MakeExperiment(tries);
 			}
 		}
