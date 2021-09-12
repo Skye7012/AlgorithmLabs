@@ -49,39 +49,40 @@ namespace MaxShiftsLab
 		public int[] GenerateUniqueArray(int randomUpperBound = int.MaxValue)
 		{
 			Random rnd = new Random();
-			HashSet<int> res = new HashSet<int>(_length);
+			HashSet<int> uniqueNumbers = new HashSet<int>(_length);
 			int count = 0;
 
 			for (int i = 0; i < _length; i++)
 			{
-				res.Add(rnd.Next(randomUpperBound));
+				uniqueNumbers.Add(rnd.Next(randomUpperBound));
 				count++;
-				while (res.Count != count)
+				while (uniqueNumbers.Count != count)
 				{
-					res.Add(rnd.Next(randomUpperBound));
+					uniqueNumbers.Add(rnd.Next(randomUpperBound));
 				}
 			}
 
 			Console.WriteLine("Array generate Done");
 
-			return MixArray(res.ToArray());
+			var res = uniqueNumbers.ToArray();
+			MixArray(res);
+
+			return res;
 		}
 
-		public int[] MixArray(int[] array)//послденяя итерация чек
+		public static void MixArray(int[] array)//послденяя итерация чек
 		{
 			Random rnd = new Random();
 
 			for (int i = array.Length - 1; i >= 1; i--)
 			{
-				int j = rnd.Next(i + 1);
+				int j = rnd.Next(i);
 				var temp = array[j];
 				array[j] = array[i];
 				array[i] = temp;
 			}
 
 			Console.WriteLine("Mixing complete");
-
-			return array;
 		}
 	}
 }

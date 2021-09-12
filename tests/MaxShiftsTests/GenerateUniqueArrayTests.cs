@@ -7,7 +7,7 @@ using Xunit;
 
 namespace MaxShiftsTests
 {
-	public class GenerateUniqueArrayTest
+	public class GenerateUniqueArrayTests
 	{
 		bool IsArrayUniqe(int[] array)
 		{
@@ -29,7 +29,6 @@ namespace MaxShiftsTests
 		{
 			var arrayLength = 10;
 			var maxShifts = new MaxShifts(arrayLength: arrayLength);
-			var values = new List<int>();
 
 			var actual = maxShifts.GenerateUniqueArray(20);
 
@@ -43,7 +42,6 @@ namespace MaxShiftsTests
 		{
 			var arrayLength = 10;
 			var maxShifts = new MaxShifts(arrayLength: arrayLength);
-			var values = new List<int>();
 
 			var actual = maxShifts.GenerateUniqueArray(20);
 
