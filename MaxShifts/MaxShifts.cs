@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MaxShifts
+namespace MaxShiftsLab
 {
-	static class MaxShifts
+	public class MaxShifts
 	{
-		private const int length = 10000000; //10 000 000
+		private readonly int _length;
+		private readonly int _tries;
 
-		public static void MakeExperiment(int tries)
+		public MaxShifts(int arrayLength = 10000000, int tries = 10)
 		{
-			int[] maxShifts = new int[tries];
+			_length = arrayLength;
+			_tries = tries;
+		}
 
-			for (int i = 0; i < tries; i++)
+		public void MakeExperiment()
+		{
+			int[] maxShifts = new int[_tries];
+
+			for (int i = 0; i < _tries; i++)
 			{
 				maxShifts[i] = GetMaxShifts();
 				Console.WriteLine($"Shifts in {i + 1}th try = {maxShifts[i]}\n");
@@ -21,7 +28,7 @@ namespace MaxShifts
 			Console.WriteLine($"\n\nAverage Shifts = {maxShifts.Average()}");
 		}
 
-		private static int GetMaxShifts()
+		private int GetMaxShifts()
 		{
 			int max = 0;
 			int countMaxChanges = 0;
@@ -39,13 +46,13 @@ namespace MaxShifts
 			return countMaxChanges;
 		}
 
-		private static int[] GenerateUniqueArray()
+		public int[] GenerateUniqueArray()
 		{
 			Random rnd = new Random();
-			HashSet<int> res = new HashSet<int>(length);
+			HashSet<int> res = new HashSet<int>(_length);
 			int count = 0;
 
-			for (int i = 0; i < length; i++)
+			for (int i = 0; i < _length; i++)
 			{
 				res.Add(rnd.Next());
 				count++;
@@ -61,7 +68,7 @@ namespace MaxShifts
 			return MixArray(res.ToArray());
 		}
 
-		private static int[] MixArray(int[] array)
+		public int[] MixArray(int[] array)//послденяя итерация чек
 		{
 			Random rnd = new Random();
 

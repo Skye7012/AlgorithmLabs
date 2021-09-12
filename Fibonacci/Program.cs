@@ -1,6 +1,6 @@
 ﻿using MyTimer;
 
-namespace GenerateUniqueArray
+namespace FibonacciLab
 {
 	static class Program
 	{

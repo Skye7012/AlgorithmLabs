@@ -1,6 +1,6 @@
 ﻿using MyTimer;
 
-namespace MaxShifts
+namespace MaxShiftsLab
 {
 	public class Program
 	{
@@ -8,8 +8,7 @@ namespace MaxShifts
 		{
 			using (var timer = new Timer())
 			{
-				const int tries = 10;
-				MaxShifts.MakeExperiment(tries);
+				new MaxShifts().MakeExperiment();
 			}
 		}
 	}
