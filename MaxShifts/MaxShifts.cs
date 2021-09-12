@@ -58,7 +58,7 @@ namespace MaxShiftsLab
 				count++;
 				while (res.Count != count)
 				{
-					res.Add(rnd.Next());
+					res.Add(rnd.Next(randomUpperBound));
 				}
 			}
 

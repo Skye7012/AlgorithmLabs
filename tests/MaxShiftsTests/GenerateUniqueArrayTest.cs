@@ -9,11 +9,21 @@ namespace MaxShiftsTests
 {
 	public class GenerateUniqueArrayTest
 	{
-		bool IsArrayUniqe()
+		bool IsArrayUniqe(int[] array)
 		{
+			var values = new List<int>();
 
-			return false;
+			foreach (var value in array)
+			{
+				if (!values.Contains(value))
+					values.Add(value);
+				else
+					return false;
+			}
+
+			return true;
 		}
+
 		[Fact]
 		public void GenerateUniqueArray_InvokeMethod_ShouldReturnUniqueArray()
 		{
@@ -25,42 +35,24 @@ namespace MaxShiftsTests
 
 			Assert.Equal(actual.Length, arrayLength);
 
-			foreach (var value in actual)
-			{
-				Assert.DoesNotContain<int>(value, values);
-				if (!values.Contains(value))
-					values.Add(value);
-			}
+			Assert.True(IsArrayUniqe(actual));
 		}
 
 		[Fact]
-		public void awea()
+		public void GenerateUniqueArray_MakeArrayNonUnique_ShouldAssertFalse()
 		{
-			try
-			{
-				var arrayLength = 10;
-				var maxShifts = new MaxShifts(arrayLength: arrayLength);
-				var values = new List<int>();
+			var arrayLength = 10;
+			var maxShifts = new MaxShifts(arrayLength: arrayLength);
+			var values = new List<int>();
 
-				var actual = maxShifts.GenerateUniqueArray(20);
+			var actual = maxShifts.GenerateUniqueArray(20);
 
+			//Make Array Non Unique
+			actual[0] = actual.Last();
 
-				var sameInteger = actual.Last();
-				actual[0] = sameInteger;
+			Assert.Equal(actual.Length, arrayLength);
 
-				Assert.Equal(actual.Length, arrayLength);
-
-				foreach (var value in actual)
-				{
-					Assert.DoesNotContain<int>(value, values);
-					if (!values.Contains(value))
-						values.Add(value);
-				}
-			}
-			catch
-			{
-				Assert.Throws<>
-			}
+			Assert.False(IsArrayUniqe(actual));
 		}
 	}
 }
