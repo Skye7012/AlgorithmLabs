@@ -11,11 +11,35 @@ namespace VaccineDevelopmentLab
 		int columns;
 		int[,] cells;
 
-		public Table(int rows = 2, int columns = 100)
+		public Table(int rows, int columns)
 		{
 			this.rows = rows;
 			this.columns = columns;
 			cells = GenerateTable(rows, columns);
+		}
+
+		public int this[int i, int j]
+		{
+			get
+			{
+				return cells[i,j];
+			}
+			set
+			{
+				cells[i, j] = value;
+			}
+		}
+		public int this[int i]
+		{
+			get
+			{
+				int res = 0;
+				for (int j = 0; j < columns; j++)
+				{
+					res += cells[i, j];
+				}
+				return res;
+			}
 		}
 
 		public static int[,] GenerateTable(int rows, int columns)

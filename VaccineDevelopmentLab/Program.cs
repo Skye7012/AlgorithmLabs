@@ -10,8 +10,9 @@ namespace VaccineDevelopmentLab
 		{
 			using(var timer = new Timer())
 			{
-				Table table = new Table();
-				table.PrintTable();
+				var test = new VaccineDevelopment(2,4);
+				test.PrintAll();
+				var i = test.GetMinCostPath();
 			}
 		}
 	}
