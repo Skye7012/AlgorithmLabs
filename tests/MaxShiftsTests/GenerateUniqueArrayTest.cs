@@ -1,21 +1,31 @@
 using MaxShiftsLab;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
+
 
 namespace MaxShiftsTests
 {
 	public class GenerateUniqueArrayTest
 	{
-		[Fact]
-		public void GenerateUniqueArray_Send1MilArrayLength_Return10MilLengthUniqueArray()
+		bool IsArrayUniqe()
 		{
-			var maxShifts = new MaxShifts(arrayLength: 100000);
+
+			return false;
+		}
+		[Fact]
+		public void GenerateUniqueArray_InvokeMethod_ShouldReturnUniqueArray()
+		{
+			var arrayLength = 10;
+			var maxShifts = new MaxShifts(arrayLength: arrayLength);
 			var values = new List<int>();
 
-			var actual = maxShifts.GenerateUniqueArray();
+			var actual = maxShifts.GenerateUniqueArray(20);
 
-			foreach(var value in actual)
+			Assert.Equal(actual.Length, arrayLength);
+
+			foreach (var value in actual)
 			{
 				Assert.DoesNotContain<int>(value, values);
 				if (!values.Contains(value))
@@ -26,14 +36,30 @@ namespace MaxShiftsTests
 		[Fact]
 		public void awea()
 		{
-			var values = new List<int>();
-			int[] actual = { 1, 2, 3, 1 };
-
-			foreach (var value in actual)
+			try
 			{
-				Assert.DoesNotContain<int>(value, values);
-				if (!values.Contains(value))
-					values.Add(value);
+				var arrayLength = 10;
+				var maxShifts = new MaxShifts(arrayLength: arrayLength);
+				var values = new List<int>();
+
+				var actual = maxShifts.GenerateUniqueArray(20);
+
+
+				var sameInteger = actual.Last();
+				actual[0] = sameInteger;
+
+				Assert.Equal(actual.Length, arrayLength);
+
+				foreach (var value in actual)
+				{
+					Assert.DoesNotContain<int>(value, values);
+					if (!values.Contains(value))
+						values.Add(value);
+				}
+			}
+			catch
+			{
+				Assert.Throws<>
 			}
 		}
 	}

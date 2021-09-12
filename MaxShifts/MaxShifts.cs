@@ -46,7 +46,7 @@ namespace MaxShiftsLab
 			return countMaxChanges;
 		}
 
-		public int[] GenerateUniqueArray()
+		public int[] GenerateUniqueArray(int randomUpperBound = int.MaxValue)
 		{
 			Random rnd = new Random();
 			HashSet<int> res = new HashSet<int>(_length);
@@ -54,7 +54,7 @@ namespace MaxShiftsLab
 
 			for (int i = 0; i < _length; i++)
 			{
-				res.Add(rnd.Next());
+				res.Add(rnd.Next(randomUpperBound));
 				count++;
 				while (res.Count != count)
 				{
@@ -62,8 +62,7 @@ namespace MaxShiftsLab
 				}
 			}
 
-			Console.WriteLine("Generate Done");
-			Console.WriteLine("Array Length = " + count);
+			Console.WriteLine("Array generate Done");
 
 			return MixArray(res.ToArray());
 		}
