@@ -16,7 +16,7 @@ namespace VaccineDevelopmentLab
 		//[1,i] mean transfer from [0,i] to [1,i]
 		Table _transfer;
 
-		//Table _path;
+		Table _path;
 
 		public VaccineDevelopment(int labs = 2, int stages = 100)
 		{
@@ -24,7 +24,7 @@ namespace VaccineDevelopmentLab
 			_stages = stages;
 			_plan = new Table(_labs, _stages);
 			_transfer = new Table(_labs, _stages);
-			//_path = new Table(_labs, _stages);
+			_path = new Table(_labs, _stages, " ");
 		}
 		public void PrintAll()
 		{
@@ -45,7 +45,17 @@ namespace VaccineDevelopmentLab
 					var tempS1 = oldSum[j] + _plan[j, i];
 					int jNext = (j + 1) % 2;
 					var tempS2 = oldSum[jNext] + _transfer[j, i] + _plan[j, i];
-					newSum[j] = tempS1 < tempS2 ? tempS1 : tempS2;//проверить как работает
+					//newSum[j] = tempS1 < tempS2 ? tempS1 : tempS2;
+					if (tempS1 <= tempS2)
+					{
+						newSum[j] = tempS1;
+						_path[j, i] = j + 1;
+					}
+					else
+					{
+						newSum[j] = tempS2;
+						_path[j, i] = jNext + 1;
+					}
 				}
 				oldSum[0] = newSum[0];
 				oldSum[1] = newSum[1];
@@ -53,11 +63,29 @@ namespace VaccineDevelopmentLab
 			var testdata1 = _plan[0];//newSum не может быть меньше любого из этих значений
 			var testdata2 = _plan[1];//добавить в UnitTest
 
+			//var res = newSum.Min();
+			(int labNum, int res) res = newSum[0] < newSum[1] ? (1, newSum[0]) : (2, newSum[1]);
 
-			var res = newSum.Min();
+			Console.WriteLine($"\ntestdata1 = {testdata1}");
+			Console.WriteLine($"testdata2 = {testdata2}");
+			Console.WriteLine($"res = {res.res}");
+			Console.WriteLine($"labNum = {res.labNum}");
 
-			return res;
+			Console.WriteLine("\n");
+			_path.PrintTable();
+
+			return res.res;
 		}
+
+		public void Print()
+		{
+
+			Console.WriteLine("Plan\n");
+			_plan.PrintTable();
+			Console.WriteLine("Transfer\n");
+			_transfer.PrintTable();
+		}
+
 
 	}
 }

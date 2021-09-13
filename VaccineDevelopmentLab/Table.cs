@@ -17,6 +17,12 @@ namespace VaccineDevelopmentLab
 			this.columns = columns;
 			cells = GenerateTable(rows, columns);
 		}
+		public Table(int rows, int columns, string costyl = " ")
+		{
+			this.rows = rows;
+			this.columns = columns;
+			cells = new int[rows, columns];
+		}
 
 		public int this[int i, int j]
 		{
@@ -69,6 +75,18 @@ namespace VaccineDevelopmentLab
 				sw.WriteLine();
 			}
 			sw.Close();
+		}
+		public void PrintTable()
+		{
+			for (int i = 0; i < cells.GetLength(0); i++)
+			{
+				for (int j = 0; j < cells.GetLength(1); j++)
+				{
+					var str = string.Format(("{0:D2} | "), cells[i, j]);
+					Console.Write(str);
+				}
+				Console.WriteLine();
+			}
 		}
 	}
 }

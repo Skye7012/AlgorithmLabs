@@ -12,6 +12,7 @@ namespace VaccineDevelopmentLab
 			{
 				var test = new VaccineDevelopment(2,4);
 				test.PrintAll();
+				test.Print();
 				var i = test.GetMinCostPath();
 			}
 		}
