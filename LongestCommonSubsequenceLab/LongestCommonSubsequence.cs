@@ -1,0 +1,7 @@
+﻿namespace LongestCommonSubsequenceLab
+{
+	class LongestCommonSubsequence
+	{
+
+	}
+}
