@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace VaccineDevelopmentLab
@@ -18,6 +16,8 @@ namespace VaccineDevelopmentLab
 		int[,] _pathMatrix;
 
 		public (int labNum, int cost) Res { get; protected set; }
+
+		public int[,] PathMatrix { get { return _pathMatrix; } }
 
 		public VaccineDevelopment(int labs = 2, int stages = 100)
 		{
