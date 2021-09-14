@@ -10,10 +10,10 @@ namespace VaccineDevelopmentLab
 		{
 			using(var timer = new Timer())
 			{
-				var vaccineDevelopmenv = new VaccineDevelopment(2,4);
-				var i = vaccineDevelopmenv.GetMinCostPath();
-				vaccineDevelopmenv.PrintMatrixs();
-				vaccineDevelopmenv.WriteMatrixToTxt();
+				var vaccineDevelopment = new VaccineDevelopment(2,4);
+				vaccineDevelopment.SolveTask();
+				vaccineDevelopment.PrintSolution();
+				vaccineDevelopment.WriteSolutionToTxt();
 			}
 		}
 	}
