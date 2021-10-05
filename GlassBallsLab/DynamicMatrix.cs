@@ -7,24 +7,54 @@ namespace GlassBallsLab
 {
 	class DynamicMatrix
 	{
-		List<List<int>> matrix;
+		public List<int[]> Matrix { get; set; }
+		int width;
+
 		public DynamicMatrix()
 		{
-			matrix = new List<List<int>>();
+			Matrix = new List<int[]>();
 		}
 		public void AddRow(int[] numbers)
 		{
-			matrix.Add(numbers.ToList());
+			FillByWidth(numbers);
+			Matrix.Add(numbers);
+		}
+		public void AddZeroRow()
+		{
+			AddRow(Enumerable.Repeat(1, width).ToArray());
+		}
+		void FillByWidth(int[] numbers)
+		{
+			if (numbers.Length < width)
+			{
+				var newNumbers = Enumerable.Repeat(0, width).ToArray();
+				for (int i = 0; i < numbers.Length; i++)
+				{
+					newNumbers[i] = numbers[i];
+				}
+				numbers = newNumbers;
+			}
+		}
+		public int[] this[int row]
+		{
+			get
+			{
+				return Matrix[row];
+			}
+			set
+			{
+				Matrix[row] = value;
+			}
 		}
 		public int this[int row, int column]
 		{
 			get
 			{
-				return matrix[row][column];
+				return Matrix[row][column];
 			}
 			set
 			{
-				matrix[row][column] = value;
+				Matrix[row][column] = value;
 			}
 		}
 	}

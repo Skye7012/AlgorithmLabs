@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GlassBallsLab
@@ -17,12 +18,15 @@ namespace GlassBallsLab
 		{
 			this.balls = balls;
 			this.floors = floors;
+			tries = 1;
 		}
 
-		void FillMaxFloors()
+		bool FillMaxFloors()
 		{
-			maxFloors = new int[tries, balls];
-			FillFirstColAndRow();
+			//maxFloors = new int[tries, balls];
+			maxFloors = new DynamicMatrix();
+			FillFirtRow();
+			return maxFloors[0].Any(x => x >= floors);
 
 			for (int i = 1; i < tries; i++)
 			{
@@ -34,13 +38,13 @@ namespace GlassBallsLab
 			}
 		}
 
-		void FillFirstColAndRow()
+		void FillFirtRow()
+			=> maxFloors.AddRow(Enumerable.Repeat(1, balls).ToArray());
+
+		int InitializeNewRow()
 		{
-			for (int i = 0; i < balls; i++)
-			{
-				maxFloors[0, i] = 1;
-				maxFloors[i, 0] = i + 1;
-			}
+			maxFloors.AddZeroRow();
+			return ++tries;
 		}
 
 		void PrintMaxFloors()
