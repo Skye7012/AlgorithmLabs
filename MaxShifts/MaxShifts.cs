@@ -70,7 +70,7 @@ namespace MaxShiftsLab
 			return res;
 		}
 
-		public static void MixArray(int[] array)//послденяя итерация чек
+		public static void MixArray(int[] array)
 		{
 			Random rnd = new Random();
 

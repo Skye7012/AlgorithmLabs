@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LongestIncreasingSubsequenceLab", "LongestIncreasingSubsequenceLab\LongestIncreasingSubsequenceLab.csproj", "{2BE77248-ACED-4788-A94A-A130F047BA02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlassBallsLab", "GlassBallsLab\GlassBallsLab.csproj", "{0BD2B820-2748-4FE3-A3F8-F85F72593B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlassBallsLab", "GlassBallsLab\GlassBallsLab.csproj", "{0BD2B820-2748-4FE3-A3F8-F85F72593B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackpackTaskLab", "BackpackTaskLab\BackpackTaskLab.csproj", "{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{0BD2B820-2748-4FE3-A3F8-F85F72593B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BD2B820-2748-4FE3-A3F8-F85F72593B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BD2B820-2748-4FE3-A3F8-F85F72593B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
