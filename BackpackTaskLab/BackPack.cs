@@ -41,30 +41,10 @@ namespace BackpackTaskLab
 
 		public int CompareTo([AllowNull] Backpack backpack)
 		{
-			if (this.Equals(backpack))
-				return 0;
+			if (backpack != null)
+				return Max.CompareTo(backpack.Max);
 			else
-			{
-				if (backpack != null)
-					return Max.CompareTo(backpack.Max);
-				else
-					return 1;
-			}
-		}
-
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !this.GetType().Equals(obj.GetType()))
-			{
-				return false;
-			}
-			else
-			{
-				Backpack b = (Backpack)obj;
-				return (Max == b.Max) 
-					&& (HasItems == b.HasItems)
-					&& (Items == b.Items);
-			}
+				return 1;
 		}
 	}
 }

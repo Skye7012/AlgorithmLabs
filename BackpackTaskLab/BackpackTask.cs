@@ -17,13 +17,12 @@ namespace BackpackTaskLab
 			_backpacks = new Backpack[_maxWeight + 1];
 			for (int i = 0; i < _backpacks.Length; i++)
 			{
-				_backpacks[i] = new Backpack();			
+				_backpacks[i] = new Backpack();
 			}
 		}
 		public Backpack GetSolution()
 		{
 			FillBackpacks();
-			//return _backpacks.First(x => x.Max == _backpacks.Max(x => x.Max));
 			return _backpacks.Max();
 		}
 		void FillBackpacks()

@@ -35,10 +35,9 @@ namespace UnitTests.BackpackTaskTests
 
 			var actualBackpack = bt.GetSolution();
 
-			Assert.Equal(expectedBackpack, actualBackpack);
-			//Assert.Equal(expectedBackpack.Max, actualBackpack.Max);
-			//Assert.Equal(expectedBackpack.HasItems, actualBackpack.HasItems);
-			//Assert.Equal(expectedBackpack.Items, actualBackpack.Items);
+			Assert.Equal(expectedBackpack.Max, actualBackpack.Max);
+			Assert.Equal(expectedBackpack.HasItems, actualBackpack.HasItems);
+			Assert.Equal(expectedBackpack.Items, actualBackpack.Items);
 		}
 	}
 }
