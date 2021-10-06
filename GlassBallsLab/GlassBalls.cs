@@ -21,16 +21,16 @@ namespace GlassBallsLab
 			_tries = 1;
 		}
 
-		public int GetTries()
+		public (int tries, int floor) GetTries()
 		{
 			_maxFloors = new List<int[]>();
 			FillFirtRow();
 
 			if (Floors <= 1)
-				return 1;
+				return (1,1);
 
-			int res = -1;
-			while (res < 0)
+			var res = (tries: -1, floor:- 1);
+			while (res.tries < 0)
 				res = AddNewRow();
 
 			return res;
@@ -38,24 +38,25 @@ namespace GlassBallsLab
 		void FillFirtRow()
 			=> _maxFloors.Add(Enumerable.Repeat(1, Balls).ToArray());
 
-		int AddNewRow()
+		(int tries, int floor) AddNewRow()
 		{
 			int[] res = new int[Balls];
 			res[0] = ++_tries;
 			int row = _tries - 1;
+			int y = 0;
 
 			for (int i = 1; i < Balls; i++)
 			{
-				res[i] = _maxFloors[row - 1][i - 1]
-					+ _maxFloors[row - 1][i] + 1;
+				y = _maxFloors[row - 1][i - 1] + 1;
+				res[i] = y + _maxFloors[row - 1][i];
 
 				if (res[i] >= Floors)
-					return _tries;
+					return (_tries, y);
 			}
 
 			_maxFloors.Add(res);
 
-			return -1;
+			return (-1,-1);
 		}
 
 		public void PrintMaxFloors()
