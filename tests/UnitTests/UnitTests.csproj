@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\GlassBallsLab\GlassBallsLab.csproj" />
     <ProjectReference Include="..\..\LongestCommonSubsequenceLab\LongestCommonSubsequenceLab.csproj" />
     <ProjectReference Include="..\..\LongestIncreasingSubsequenceLab\LongestIncreasingSubsequenceLab.csproj" />
     <ProjectReference Include="..\..\MaxShifts\MaxShiftsLab.csproj" />

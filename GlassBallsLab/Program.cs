@@ -9,8 +9,8 @@ namespace GlassBallsLab
 		{
 			using (var timer = new Timer())
 			{
-				var gb = new GlassBalls(999999,999999);
-				var res = gb.GetTries();
+				var gb = new GlassBalls(4,999999);
+				var res = gb.GetSolution();
 				Console.WriteLine("tries: " + res.tries);
 				Console.WriteLine("first floor to throw: " + res.floor);
 				//gb.PrintMaxFloors();

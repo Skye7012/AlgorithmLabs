@@ -5,8 +5,7 @@ using System.Text;
 
 namespace GlassBallsLab
 {
-	//сделать через Action delegate
-	class GlassBalls
+	public class GlassBalls
 	{
 		const int _width = 3;
 		int _tries;
@@ -20,21 +19,42 @@ namespace GlassBallsLab
 			Floors = floors;
 			_tries = 1;
 		}
+		public (int tries, int floor) GetSolution()
+		{
+			int neededBalls = (int)Math.Ceiling(Math.Log2(Floors)) + 1;
 
-		public (int tries, int floor) GetTries()
+			if (Balls == 0)
+				return (-1, -1);
+			else if (Balls == 1)
+				return (Floors, 1);
+			else if (Balls >= neededBalls)
+				return GetSolutionByBinarySearch();
+			else
+				return GetSolutionByOwnMethod();
+		}
+
+		public (int tries, int floor) GetSolutionByOwnMethod()
 		{
 			_maxFloors = new List<int[]>();
 			FillFirtRow();
 
 			if (Floors <= 1)
-				return (1,1);
+				return (1, 1);
 
-			var res = (tries: -1, floor:- 1);
+			var res = (tries: -1, floor: -1);
 			while (res.tries < 0)
 				res = AddNewRow();
 
 			return res;
 		}
+
+		public (int tries, int floor) GetSolutionByBinarySearch()
+		{
+			int tries = (int)Math.Ceiling(Math.Log2(Floors));
+			int floor = (int)Math.Ceiling((double)Floors / 2);
+			return (tries, floor);
+		}
+
 		void FillFirtRow()
 			=> _maxFloors.Add(Enumerable.Repeat(1, Balls).ToArray());
 
@@ -56,12 +76,12 @@ namespace GlassBallsLab
 
 			_maxFloors.Add(res);
 
-			return (-1,-1);
+			return (-1, -1);
 		}
 
 		public void PrintMaxFloors()
 		{
-			for (int i = 0; i < _tries-1; i++)
+			for (int i = 0; i < _tries - 1; i++)
 			{
 				for (int j = 0; j < Balls; j++)
 				{
