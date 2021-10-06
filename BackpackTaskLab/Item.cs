@@ -16,5 +16,12 @@ namespace BackpackTaskLab
 		public string Name { get; set; }
 		public int Weight { get; set; }
 		public int Value { get; set; }
+
+		public void Print()
+		{
+			Console.WriteLine($"		Name: {Name}");
+			Console.WriteLine($"		Weight: {Weight}");
+			Console.WriteLine($"		Value: {Value}");
+		}
 	}
 }

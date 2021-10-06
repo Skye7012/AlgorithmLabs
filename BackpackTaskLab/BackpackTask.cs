@@ -38,14 +38,25 @@ namespace BackpackTaskLab
 							if (backpack.Max < prevBackpack.Max + item.Value)
 							{
 								backpack.Max = prevBackpack.Max + item.Value;
-								backpack.Items = prevBackpack.Items;//test
 								backpack.Items = new HashSet<Item>(prevBackpack.Items.ToArray());
 								backpack.Items.Add(item);
 								backpack.HasItems = true;
-								//_backpacks[j] = backpack;
 							}
 					}
 				}
+			}
+
+			PrintBackpacks();
+		}
+		public void PrintBackpacks()
+		{
+			for (int i = 0; i < _backpacks.Length; i++)
+			{
+				Backpack backpack = _backpacks[i];
+				Console.WriteLine($"Backpack №{i}");
+				backpack.Print();
+				Console.WriteLine();
+				Console.WriteLine();
 			}
 		}
 	}

@@ -21,5 +21,21 @@ namespace BackpackTaskLab
 		public int Max { get; set; }
 		public HashSet<Item> Items { get; set; }
 		public bool HasItems { get; set; }
+
+		public void Print()
+		{
+			Console.WriteLine($"max: {Max}");
+			Console.WriteLine($"hasItems: {HasItems}");
+			int i = 1;
+			if (Items.Count > 0)
+			{
+				Console.WriteLine("Items:");
+				foreach (var item in Items)
+				{
+					Console.WriteLine($"	Item №: {i++}");
+					item.Print();
+				}
+			}
+		}
 	}
 }
