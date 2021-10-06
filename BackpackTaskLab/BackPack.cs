@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace BackpackTaskLab
 {
-	public class Backpack
+	public class Backpack : IComparable<Backpack>
 	{
 		public Backpack(int max, HashSet<Item> items, bool hasItems)
 		{
@@ -36,6 +37,14 @@ namespace BackpackTaskLab
 					item.Print();
 				}
 			}
+		}
+
+		public int CompareTo([AllowNull] Backpack backpack)
+		{
+			if (backpack != null)
+				return Max.CompareTo(backpack.Max);
+			else
+				return 1;
 		}
 	}
 }

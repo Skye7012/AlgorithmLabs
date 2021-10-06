@@ -20,7 +20,13 @@ namespace BackpackTaskLab
 				_backpacks[i] = new Backpack();			
 			}
 		}
-		public void GetSolution()
+		public Backpack GetSolution()
+		{
+			FillBackpacks();
+			//return _backpacks.First(x => x.Max == _backpacks.Max(x => x.Max));
+			return _backpacks.Max();
+		}
+		void FillBackpacks()
 		{
 			_backpacks[0].HasItems = true;
 
@@ -45,8 +51,6 @@ namespace BackpackTaskLab
 					}
 				}
 			}
-
-			PrintBackpacks();
 		}
 		public void PrintBackpacks()
 		{

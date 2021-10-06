@@ -1,6 +1,7 @@
 ﻿using MyTimer;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BackpackTaskLab
 {
@@ -20,7 +21,13 @@ namespace BackpackTaskLab
 				};
 
 				BackpackTask bt = new BackpackTask(10, items);
-				bt.GetSolution();
+				var res = bt.GetSolution();
+				bt.PrintBackpacks();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine("Solution: ");
+				Console.WriteLine($"Backpack №{res.Items.Sum(x => x.Weight)}");
+				res.Print();
 			}
 		}
 	}
