@@ -23,7 +23,7 @@ namespace GlassBallsLab
 		{
 			int neededBalls = (int)Math.Ceiling(Math.Log2(Floors)) + 1;
 
-			if (Balls == 0)
+			if (Balls == 0 || Floors == 0)
 				return (-1, -1);
 			else if (Balls == 1)
 				return (Floors, 1);
