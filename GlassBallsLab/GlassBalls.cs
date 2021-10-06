@@ -8,52 +8,63 @@ namespace GlassBallsLab
 	//сделать через Action delegate
 	class GlassBalls
 	{
-		int tries;
-		int balls;
-		int floors;
-		//int[,] maxFloors;
-		DynamicMatrix maxFloors;
+		const int _width = 3;
+		int _tries;
+		List<int[]> _maxFloors;
+		public int Balls { get; set; }
+		public int Floors { get; set; }
 
 		public GlassBalls(int balls, int floors)
 		{
-			this.balls = balls;
-			this.floors = floors;
-			tries = 1;
+			Balls = balls;
+			Floors = floors;
+			_tries = 1;
 		}
 
-		bool FillMaxFloors()
+		public int GetTries()
 		{
-			//maxFloors = new int[tries, balls];
-			maxFloors = new DynamicMatrix();
+			_maxFloors = new List<int[]>();
 			FillFirtRow();
-			return maxFloors[0].Any(x => x >= floors);
 
-			for (int i = 1; i < tries; i++)
-			{
-				for (int j = 1; j < balls; j++)
-				{
-					maxFloors[i, j] = maxFloors[i - 1, j - 1]
-						+ maxFloors[i - 1, j] + 1;
-				}
-			}
+			if (Floors <= 1)
+				return 1;
+
+			int res = -1;
+			while (res < 0)
+				res = AddNewRow();
+
+			return res;
 		}
-
 		void FillFirtRow()
-			=> maxFloors.AddRow(Enumerable.Repeat(1, balls).ToArray());
+			=> _maxFloors.Add(Enumerable.Repeat(1, Balls).ToArray());
 
-		int InitializeNewRow()
+		int AddNewRow()
 		{
-			maxFloors.AddZeroRow();
-			return ++tries;
+			int[] res = new int[Balls];
+			res[0] = ++_tries;
+			int row = _tries - 1;
+
+			for (int i = 1; i < Balls; i++)
+			{
+				res[i] = _maxFloors[row - 1][i - 1]
+					+ _maxFloors[row - 1][i] + 1;
+
+				if (res[i] >= Floors)
+					return _tries;
+			}
+
+			_maxFloors.Add(res);
+
+			return -1;
 		}
 
-		void PrintMaxFloors()
+		public void PrintMaxFloors()
 		{
-			for (int i = 0; i < tries; i++)
+			for (int i = 0; i < _tries-1; i++)
 			{
-				for (int j = 0; j < balls; j++)
+				for (int j = 0; j < Balls; j++)
 				{
-					Console.Write(maxFloors[i,j] + " ");
+					Console.Write(_maxFloors[i][j] + " ");
 				}
 				Console.WriteLine();
 			}
