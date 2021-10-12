@@ -7,7 +7,6 @@ namespace GlassBallsLab
 {
 	public class GlassBalls
 	{
-		const int _width = 3;
 		int _tries;
 		List<int[]> _maxFloors;
 		public int Balls { get; set; }
@@ -19,6 +18,9 @@ namespace GlassBallsLab
 			Floors = floors;
 			_tries = 1;
 		}
+
+		public GlassBalls() { }
+
 		public (int tries, int floor) GetSolution()
 		{
 			int neededBalls = (int)Math.Ceiling(Math.Log2(Floors)) + 1;
@@ -37,6 +39,10 @@ namespace GlassBallsLab
         {
 			Random rnd = new Random();
 			int soghtFloor = rnd.Next(0,Floors+2);
+			int ballsLeft = Balls;
+			int triesLeft = _tries;
+			bool isCrashed = false;
+			//int choosedFloor = 0;
 
 			var res = GetSolution();
 			Console.WriteLine("tries: " + res.tries);
@@ -47,34 +53,34 @@ namespace GlassBallsLab
 
 			int i = 0;
 			while(res.floor != soghtFloor)
-            {
-				i++;
-				int ballsLeft = Balls - i;
-				int triesLeft = _tries - i;
-				bool isCrashed = false;
-
-                Console.WriteLine("Thrown ball from " + res.floor + "floor");
+            {												
+                Console.WriteLine("Thrown ball from " + res.floor + " floor");
 
 				if (res.floor > soghtFloor)
 				{
 					isCrashed = true;
+					ballsLeft--;
+					triesLeft--;
+					i++;
+					//choosedFloor = _maxFloors[triesLeft - 1][ballsLeft - 1] + 1;
 					Console.WriteLine("The ball crashed");
 				}
 				else
 				{
 					isCrashed = false;
+					//choosedFloor = _maxFloors[triesLeft - 1][ballsLeft - 1];
 					Console.WriteLine("The ball didn't crash");
 				}
                 
 				Console.WriteLine($"Tries left = {_tries} - {i} = {triesLeft}");
                 Console.WriteLine($"Balls left = {Balls} - {i} = {ballsLeft}");
 
-				int chooseFloor = isCrashed
-					? Floors - res.floor
-					: res.floor;
+                int choosedFloor = isCrashed
+                    ? Floors - res.floor
+                    : res.floor;
 
-				GlassBalls gb = new GlassBalls(ballsLeft, chooseFloor);
-				res = GetSolution();
+                GlassBalls gb = new GlassBalls(ballsLeft, choosedFloor);
+				res = gb.GetSolution();
             }
 		}
 
