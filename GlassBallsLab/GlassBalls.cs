@@ -42,32 +42,41 @@ namespace GlassBallsLab
 			int ballsLeft = Balls;
 			int triesLeft = _tries;
 			bool isCrashed = false;
-			//int choosedFloor = 0;
+			
 
 			var res = GetSolution();
 			Console.WriteLine("tries: " + res.tries);
+			Console.WriteLine("floors: " + Floors);
 			Console.WriteLine("first floor to throw: " + res.floor);
 			Console.WriteLine("sought floor " + soghtFloor);
             Console.WriteLine("Begin algorithm? Press Enter");
 			Console.ReadLine();
 
+			int choosedFloor = res.floor;
 			int i = 0;
 			while(res.floor != soghtFloor)
             {												
-                Console.WriteLine("Thrown ball from " + res.floor + " floor");
+                Console.WriteLine("Thrown ball from " + choosedFloor + " floor");
 
-				if (res.floor > soghtFloor)
+				if (choosedFloor > soghtFloor)
 				{
 					isCrashed = true;
 					ballsLeft--;
 					triesLeft--;
 					i++;
-					//choosedFloor = _maxFloors[triesLeft - 1][ballsLeft - 1] + 1;
+					choosedFloor = res.floor - 1;
+					GlassBalls gb = new GlassBalls(ballsLeft, choosedFloor);
+					res = gb.GetSolution();
+					choosedFloor = res.floor;
 					Console.WriteLine("The ball crashed");
 				}
 				else
 				{
-					isCrashed = false;
+					isCrashed = false;					
+					choosedFloor = Floors - res.floor;
+					GlassBalls gb = new GlassBalls(ballsLeft, choosedFloor);
+					res = gb.GetSolution();
+					choosedFloor = choosedFloor + res.floor;
 					//choosedFloor = _maxFloors[triesLeft - 1][ballsLeft - 1];
 					Console.WriteLine("The ball didn't crash");
 				}
@@ -75,12 +84,14 @@ namespace GlassBallsLab
 				Console.WriteLine($"Tries left = {_tries} - {i} = {triesLeft}");
                 Console.WriteLine($"Balls left = {Balls} - {i} = {ballsLeft}");
 
-                int choosedFloor = isCrashed
-                    ? Floors - res.floor
-                    : res.floor;
+                //choosedFloor = isCrashed
+                //    ? Floors - res.floor
+                //    : res.floor - 1;
 
-                GlassBalls gb = new GlassBalls(ballsLeft, choosedFloor);
-				res = gb.GetSolution();
+               // GlassBalls gb = new GlassBalls(ballsLeft, choosedFloor);
+				//res = gb.GetSolution();
+				//choosedFloor = choosedFloor + res.floor;
+                Console.WriteLine();
             }
 		}
 
