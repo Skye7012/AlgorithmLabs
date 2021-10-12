@@ -33,6 +33,51 @@ namespace GlassBallsLab
 				return GetSolutionByOwnMethod();
 		}
 
+		public void AlgorithmDemonsration()
+        {
+			Random rnd = new Random();
+			int soghtFloor = rnd.Next(0,Floors+2);
+
+			var res = GetSolution();
+			Console.WriteLine("tries: " + res.tries);
+			Console.WriteLine("first floor to throw: " + res.floor);
+			Console.WriteLine("sought floor " + soghtFloor);
+            Console.WriteLine("Begin algorithm? Press Enter");
+			Console.ReadLine();
+
+			int i = 0;
+			while(res.floor != soghtFloor)
+            {
+				i++;
+				int ballsLeft = Balls - i;
+				int triesLeft = _tries - i;
+				bool isCrashed = false;
+
+                Console.WriteLine("Thrown ball from " + res.floor + "floor");
+
+				if (res.floor > soghtFloor)
+				{
+					isCrashed = true;
+					Console.WriteLine("The ball crashed");
+				}
+				else
+				{
+					isCrashed = false;
+					Console.WriteLine("The ball didn't crash");
+				}
+                
+				Console.WriteLine($"Tries left = {_tries} - {i} = {triesLeft}");
+                Console.WriteLine($"Balls left = {Balls} - {i} = {ballsLeft}");
+
+				int chooseFloor = isCrashed
+					? Floors - res.floor
+					: res.floor;
+
+				GlassBalls gb = new GlassBalls(ballsLeft, chooseFloor);
+				res = GetSolution();
+            }
+		}
+
 		public (int tries, int floor) GetSolutionByOwnMethod()
 		{
 			_maxFloors = new List<int[]>();
