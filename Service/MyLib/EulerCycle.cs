@@ -57,15 +57,15 @@ namespace MyLib
 					{
 						while(true)
 						{
+
 							if(_temp.Count == 1)
 							{
 								_answer.Push(_temp.Pop());
 								break;
 							}
-							var toPop = _temp.Pop();
-							_answer.Push(toPop);
-							toPop = _temp.Peek();
-							st = top = toPop.endTop;
+
+							_answer.Push(_temp.Pop());
+							st = top = _temp.Peek().endTop;
 
 							if (HaveWay(top))
 								break;
@@ -77,33 +77,10 @@ namespace MyLib
 				throw new Exception();
 			else
 			{
-				var res = _answer/*.Reverse()*/.ToList();
+				var res = _answer.ToList();
 				return res;
 			}
 		}
-
-		//void actionAtDeadEnd()
-		//{
-		//	if (rib.endTop != st)
-		//		throw new Exception();
-		//	else
-		//	{
-		//		while (true)
-		//		{
-		//			_answer.Push(_temp.Pop());
-		//			if (haveWay(_temp.Pop().endTop))
-		//				break;
-		//		}
-		//	}
-		//}
-
-		//bool TryGetNextTop(int endTop)
-		//{
-		//	if (!HaveWay(endTop))
-		//		return false;
-		//	else
-		//		ret
-		//}
 
 		void RemoveEmptyHashSet(int key)
 		{
@@ -115,11 +92,6 @@ namespace MyLib
 		{
 			return _adjacencyList.ContainsKey(endTop);
 		}
-
-		//bool isDeadEnd(int endTop)
-		//{
-		//	return !HaveWay();
-		//}
 
 
 		#endregion

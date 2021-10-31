@@ -13,7 +13,7 @@ namespace MyLib
 				(1,1,2),(1,6,3),
 				(2,2,3),
 				(3,3,4),(3,5,0),
-				(4,4,1),
+				(4,4,1),(4,8,0)
 			};
 
 			HashSet<(int, int, int)> ribs2 = new HashSet<(int, int, int)>()
