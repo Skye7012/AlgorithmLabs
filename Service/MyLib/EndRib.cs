@@ -17,5 +17,10 @@ namespace MyLib
 			_number = number;
 			_endTop = endTop;
 		}
+
+		public static implicit operator EndRib((int, int) given)
+		{
+			return new EndRib(given.Item1, given.Item2);
+		}
 	}
 }

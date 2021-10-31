@@ -6,24 +6,14 @@ namespace MyLib
 {
 	public class EulerCycle
 	{
-		// Ребра
-		int _ribs;
+		List<TopWithRibs> _topsWithRibs;
 
-		// Вершины
-		int _tops;
-
-		/// <summary>
-		/// 1 — начальная вершина
-		/// 2 — ребро
-		/// 3 — конечная вершина
-		/// </summary>
-		Dictionary<int, Dictionary<int, int>> _adjacencyList;
-		//Dictionary<int, (int rib, int top)> _adjacencyList;
-
-		public EulerCycle(Dictionary<int, Dictionary<int, int>> adjacencyList)
+		public EulerCycle(List<TopWithRibs> topsWithRibs)
 		{
-			_adjacencyList = adjacencyList;
-
+			_topsWithRibs = topsWithRibs;
 		}
+
+
+
 	}
 }
