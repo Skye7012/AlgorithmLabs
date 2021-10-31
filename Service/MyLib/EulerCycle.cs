@@ -25,6 +25,8 @@ namespace MyLib
 		{
 			_adjacencyList = adjacencyList;
 			_countRibs = CountRibs();
+			_temp = new Stack<(int rib, int endTop)>();
+			_answer = new Stack<(int rib, int endTop)>();
 		}
 
 		#region logic
@@ -35,40 +37,49 @@ namespace MyLib
 				return null;
 
 			int st = _adjacencyList.First().Key;
-			//var x = _adjacencyList.Keys;
+			int top = st;
 
-			while(true)
+			while(_adjacencyList.Any())
 			{
-				int key = st;
-				if (!_adjacencyList[key].Any())
-				{
-					_adjacencyList.Remove(key);
-					key = _adjacencyList.First().Key;
-				}
-				var rib = _adjacencyList[st].First();
-				_adjacencyList[st].Remove(rib);
+				var rib = _adjacencyList[top].First();
+				_adjacencyList[top].Remove(rib);
+				RemoveEmptyHashSet(top);
 				_temp.Push(rib);
+				top = rib.endTop;
 
 
 				// actionsAtDeadEnd
-				if (isDeadEnd(rib.endTop))
+				if (!HaveWay(top))
 				{
-					if (rib.endTop != st)
+					if (top != st)
 						throw new Exception();
 					else
 					{
 						while(true)
 						{
-							_answer.Push(_temp.Pop());
-							if (haveWay(_temp.Pop().endTop))
+							if(_temp.Count == 1)
+							{
+								_answer.Push(_temp.Pop());
+								break;
+							}
+							var toPop = _temp.Pop();
+							_answer.Push(toPop);
+							toPop = _temp.Peek();
+							st = top = toPop.endTop;
+
+							if (HaveWay(top))
 								break;
 						}
 					}
 				}
-
-
 			}
-		
+			if (_adjacencyList.Any())
+				throw new Exception();
+			else
+			{
+				var res = _answer/*.Reverse()*/.ToList();
+				return res;
+			}
 		}
 
 		//void actionAtDeadEnd()
@@ -86,20 +97,29 @@ namespace MyLib
 		//	}
 		//}
 
-		void RemoveEmptyHashSet()
-		{
+		//bool TryGetNextTop(int endTop)
+		//{
+		//	if (!HaveWay(endTop))
+		//		return false;
+		//	else
+		//		ret
+		//}
 
+		void RemoveEmptyHashSet(int key)
+		{
+			if (!_adjacencyList[key].Any())
+				_adjacencyList.Remove(key);
 		}
 
-		bool haveWay(int endTop)
+		bool HaveWay(int endTop)
 		{
 			return _adjacencyList.ContainsKey(endTop);
 		}
 
-		bool isDeadEnd(int endTop)
-		{
-			return !_adjacencyList.Any(x => x.Key == endTop);
-		}
+		//bool isDeadEnd(int endTop)
+		//{
+		//	return !HaveWay();
+		//}
 
 
 		#endregion
