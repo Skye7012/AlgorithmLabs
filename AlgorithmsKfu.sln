@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LongestIncreasingSubsequenc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlassBallsLab", "GlassBallsLab\GlassBallsLab.csproj", "{0BD2B820-2748-4FE3-A3F8-F85F72593B20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackpackTaskLab", "BackpackTaskLab\BackpackTaskLab.csproj", "{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackpackTaskLab", "BackpackTaskLab\BackpackTaskLab.csproj", "{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{3B6C08A2-632B-41E0-A1A7-62AC0EC51A71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib", "Service\MyLib\MyLib.csproj", "{E309D573-478F-4A0F-9636-E81BF43CC0F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,12 +69,17 @@ Global
 		{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0042A3ED-425B-4403-BE0D-93CD6AFC12B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E309D573-478F-4A0F-9636-E81BF43CC0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E309D573-478F-4A0F-9636-E81BF43CC0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E309D573-478F-4A0F-9636-E81BF43CC0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E309D573-478F-4A0F-9636-E81BF43CC0F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{481F056B-C486-47F2-88C8-BDDA76AE19DC} = {2468D1C3-4BAD-4A34-B09F-5B41DB38CAD4}
+		{E309D573-478F-4A0F-9636-E81BF43CC0F1} = {3B6C08A2-632B-41E0-A1A7-62AC0EC51A71}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F7054D4-F059-4CDE-8CA4-7DDB7B3B3EC7}
