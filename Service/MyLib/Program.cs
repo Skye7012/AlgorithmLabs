@@ -40,9 +40,9 @@ namespace MyLib
 			};
 
 			//var x = TopWithRibs.ToTopWithRibs(ribs);
-			var x = EulerCycle.TupleToAdjacencyList(ribsNotValide);
+			var x = EulerCycle.TupleToAdjacencyList(ribs2);
 			var e = new EulerCycle(x);
-			e.Solve();
+			e.Solve(2);
 			e.CountRibs();
 			var y = x.Count;
 		}

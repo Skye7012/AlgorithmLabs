@@ -31,15 +31,20 @@ namespace MyLib
 
 		#region logic
 
-		public List<(int rib, int endTop)> Solve ()
+		public List<(int rib, int endTop)> Solve(int? startTop = null)
 		{
 			if (!_adjacencyList.Any())
-				return null;
+				throw new Exception("Empty sourse");
 
-			int st = _adjacencyList.First().Key;
+			
+
+			int st = startTop.HasValue ? startTop.Value : _adjacencyList.First().Key;
 			int top = st;
 
-			while(_adjacencyList.Any())
+			if (!_adjacencyList.ContainsKey(st))
+				throw new Exception("There is not such startTop");
+
+			while (_adjacencyList.Any())
 			{
 				var rib = _adjacencyList[top].First();
 				_adjacencyList[top].Remove(rib);
@@ -59,10 +64,9 @@ namespace MyLib
 						{
 							if(_temp.Count == 1)
 							{
-								var toPop = _temp.Pop();
-								_answer.Push(toPop);
+								_answer.Push(_temp.Pop());
 
-								if (!HaveWay(toPop.endTop))
+								if(_adjacencyList.Any())
 									throw new Exception("Not Related Graph");
 
 								break;
