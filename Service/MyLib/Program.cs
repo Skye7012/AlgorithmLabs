@@ -25,8 +25,22 @@ namespace MyLib
 				(4,5,2),
 			};
 
+			HashSet<(int, int, int)> ribsNotRelated = new HashSet<(int, int, int)>()
+			{
+				(0,0,1),
+				(1,1,2),
+				(2,3,3),
+				(3,3,0),
+				(10,10,10)
+			};
+
+			HashSet<(int, int, int)> ribsNotValide = new HashSet<(int, int, int)>()
+			{
+				(0,0,1),
+			};
+
 			//var x = TopWithRibs.ToTopWithRibs(ribs);
-			var x = EulerCycle.TupleToAdjacencyList(ribs2);
+			var x = EulerCycle.TupleToAdjacencyList(ribsNotValide);
 			var e = new EulerCycle(x);
 			e.Solve();
 			e.CountRibs();

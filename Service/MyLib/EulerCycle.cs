@@ -52,15 +52,19 @@ namespace MyLib
 				if (!HaveWay(top))
 				{
 					if (top != st)
-						throw new Exception();
+						throw new Exception("Not Valide Graph");
 					else
 					{
 						while(true)
 						{
-
 							if(_temp.Count == 1)
 							{
-								_answer.Push(_temp.Pop());
+								var toPop = _temp.Pop();
+								_answer.Push(toPop);
+
+								if (!HaveWay(toPop.endTop))
+									throw new Exception("Not Related Graph");
+
 								break;
 							}
 
