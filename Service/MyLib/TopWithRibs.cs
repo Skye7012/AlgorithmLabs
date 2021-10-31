@@ -14,7 +14,7 @@ namespace MyLib
 		// коллекция конечных ребер
 		HashSet<EndRib> _endRibs;
 
-		public List<TopWithRibs> ToTopWithRibs(HashSet<(int top, int ribNumber, int end)> ribs)
+		public static List<TopWithRibs> ToTopWithRibs(HashSet<(int top, int ribNumber, int end)> ribs)
 		{
 			List<TopWithRibs> res = new List<TopWithRibs>();
 
