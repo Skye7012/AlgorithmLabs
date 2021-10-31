@@ -18,6 +18,9 @@ namespace MyLib
 
 			//var x = TopWithRibs.ToTopWithRibs(ribs);
 			var x = EulerCycle.TupleToAdjacencyList(ribs);
+			var e = new EulerCycle(x);
+			e.CountRibs();
+			var y = x.Count;
 		}
 	}
 }
