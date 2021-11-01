@@ -20,13 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BackpackTaskLab\BackpackTaskLab.csproj" />
-    <ProjectReference Include="..\..\GlassBallsLab\GlassBallsLab.csproj" />
-    <ProjectReference Include="..\..\LongestCommonSubsequenceLab\LongestCommonSubsequenceLab.csproj" />
-    <ProjectReference Include="..\..\LongestIncreasingSubsequenceLab\LongestIncreasingSubsequenceLab.csproj" />
-    <ProjectReference Include="..\..\MaxShifts\MaxShiftsLab.csproj" />
+    <ProjectReference Include="..\..\Core\BackpackTaskLab\BackpackTaskLab.csproj" />
+    <ProjectReference Include="..\..\Core\Fibonacci\FibonacciLab.csproj" />
+    <ProjectReference Include="..\..\Core\GlassBallsLab\GlassBallsLab.csproj" />
+    <ProjectReference Include="..\..\Core\LongestCommonSubsequenceLab\LongestCommonSubsequenceLab.csproj" />
+    <ProjectReference Include="..\..\Core\LongestIncreasingSubsequenceLab\LongestIncreasingSubsequenceLab.csproj" />
+    <ProjectReference Include="..\..\Core\MaxShifts\MaxShiftsLab.csproj" />
+    <ProjectReference Include="..\..\Core\VaccineDevelopmentLab\VaccineDevelopmentLab.csproj" />
     <ProjectReference Include="..\..\Service\MyLib\MyLib.csproj" />
-    <ProjectReference Include="..\..\VaccineDevelopmentLab\VaccineDevelopmentLab.csproj" />
   </ItemGroup>
 
 </Project>
