@@ -25,6 +25,7 @@
     <ProjectReference Include="..\..\LongestCommonSubsequenceLab\LongestCommonSubsequenceLab.csproj" />
     <ProjectReference Include="..\..\LongestIncreasingSubsequenceLab\LongestIncreasingSubsequenceLab.csproj" />
     <ProjectReference Include="..\..\MaxShifts\MaxShiftsLab.csproj" />
+    <ProjectReference Include="..\..\Service\MyLib\MyLib.csproj" />
     <ProjectReference Include="..\..\VaccineDevelopmentLab\VaccineDevelopmentLab.csproj" />
   </ItemGroup>
 

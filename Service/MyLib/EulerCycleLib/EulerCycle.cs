@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MyLib.EulerCycleLib.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MyLib
+namespace MyLib.EulerCycleLib
 {
 	public class EulerCycle
 	{
@@ -29,12 +30,20 @@ namespace MyLib
 			_answer = new Stack<(int rib, int endTop)>();
 		}
 
+		public EulerCycle(HashSet<(int startTop, int rib, int endTop)> adjacencyList)
+		{
+			_adjacencyList = TupleToAdjacencyList(adjacencyList);
+			_countRibs = CountRibs();
+			_temp = new Stack<(int rib, int endTop)>();
+			_answer = new Stack<(int rib, int endTop)>();
+		}
+
 		#region logic
 
 		public List<(int rib, int endTop)> Solve(int? startTop = null)
 		{
 			if (!_adjacencyList.Any())
-				throw new Exception("Empty sourse");
+				throw new EmptyAdjacencyListException();
 
 			
 
@@ -42,7 +51,7 @@ namespace MyLib
 			int top = st;
 
 			if (!_adjacencyList.ContainsKey(st))
-				throw new Exception("There is not such startTop");
+				throw new NotFoundSuchStartTopException(st);
 
 			while (_adjacencyList.Any())
 			{
@@ -57,7 +66,7 @@ namespace MyLib
 				if (!HaveWay(top))
 				{
 					if (top != st)
-						throw new Exception("Not Valide Graph");
+						throw new NotValideGraphException();
 					else
 					{
 						while(true)
@@ -66,8 +75,8 @@ namespace MyLib
 							{
 								_answer.Push(_temp.Pop());
 
-								if(_adjacencyList.Any())
-									throw new Exception("Not Related Graph");
+								if (_adjacencyList.Any())
+									throw new NotRelatedGraphException();
 
 								break;
 							}

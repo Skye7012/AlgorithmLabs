@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyLib.EulerCycleLib;
+using System;
 using System.Collections.Generic;
 
 namespace MyLib
@@ -39,10 +40,13 @@ namespace MyLib
 				(0,0,1),
 			};
 
+			HashSet<(int, int, int)> nullRib = new HashSet<(int, int, int)>();
+
 			//var x = TopWithRibs.ToTopWithRibs(ribs);
-			var x = EulerCycle.TupleToAdjacencyList(ribs2);
+			var x = EulerCycle.TupleToAdjacencyList(ribs);
 			var e = new EulerCycle(x);
-			e.Solve(2);
+			var res = e.Solve(4);
+			var qw = CodeGenerator.InitializationGenerator.InitializeTupleList(res);
 			e.CountRibs();
 			var y = x.Count;
 		}
