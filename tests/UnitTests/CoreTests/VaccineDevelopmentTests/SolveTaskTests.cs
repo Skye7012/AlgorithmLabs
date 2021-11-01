@@ -2,7 +2,7 @@ using System.Linq;
 using VaccineDevelopmentLab;
 using Xunit;
 
-namespace UnitTests.VaccineDevelopmentTests
+namespace UnitTests.CoreTests.VaccineDevelopmentTests
 {
 	public class SolveTaskTests
 	{

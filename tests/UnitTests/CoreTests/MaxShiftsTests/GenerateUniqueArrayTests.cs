@@ -4,7 +4,7 @@ using MaxShiftsLab;
 using Xunit;
 
 
-namespace UnitTests.MaxShiftsTests
+namespace UnitTests.CoreTests.MaxShiftsTests
 {
 	public class GenerateUniqueArrayTests
 	{

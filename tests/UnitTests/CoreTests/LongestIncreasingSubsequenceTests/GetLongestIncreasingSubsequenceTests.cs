@@ -2,7 +2,7 @@ using LongestCommonSubsequenceLab;
 using LongestIncreasingSubsequenceLab;
 using Xunit;
 
-namespace UnitTests.LongestIncreasingSubsequenceTests
+namespace UnitTests.CoreTests.LongestIncreasingSubsequenceTests
 {
 	public class GetLongestIncreasingSubsequenceTests
 	{

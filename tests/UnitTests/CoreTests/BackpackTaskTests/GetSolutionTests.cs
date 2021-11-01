@@ -4,7 +4,7 @@ using System.Text;
 using BackpackTaskLab;
 using Xunit;
 
-namespace UnitTests.BackpackTaskTests
+namespace UnitTests.CoreTests.BackpackTaskTests
 {
 	public class GetSolutionTests
 	{
@@ -29,7 +29,7 @@ namespace UnitTests.BackpackTaskTests
 		[Fact]
 		public void SendItems_ShouldReturnSolution()
 		{
-			BackpackTask bt = new BackpackTask(10, _items);
+			var bt = new BackpackTask(10, _items);
 
 			var expectedBackpack = new Backpack(20, _expectedItems, true);
 

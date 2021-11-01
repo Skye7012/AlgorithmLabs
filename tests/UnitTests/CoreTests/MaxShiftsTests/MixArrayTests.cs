@@ -2,7 +2,7 @@ using MaxShiftsLab;
 using Xunit;
 
 
-namespace UnitTests.MaxShiftsTests
+namespace UnitTests.CoreTests.MaxShiftsTests
 {
 	public class MixArrayTests
 	{
@@ -14,7 +14,7 @@ namespace UnitTests.MaxShiftsTests
 			var arrayToMix = (int[])array.Clone();
 			MaxShifts.MixArray(arrayToMix);
 
-			for (int i = 0; i < array.Length; i++)
+			for (var i = 0; i < array.Length; i++)
 			{
 				Assert.NotEqual(array[i], arrayToMix[i]);
 			}

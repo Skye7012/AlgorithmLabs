@@ -1,7 +1,7 @@
 using LongestCommonSubsequenceLab;
 using Xunit;
 
-namespace UnitTests.LongestCommonSubsequenceTests
+namespace UnitTests.CoreTests.LongestCommonSubsequenceTests
 {
 	public class GetLongestCommonSubsequenceTests
 	{
