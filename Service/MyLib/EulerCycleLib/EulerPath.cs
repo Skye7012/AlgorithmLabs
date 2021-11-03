@@ -97,66 +97,17 @@ namespace MyLib.EulerCycleLib
 				return false;
 		}
 
-
 		public List<(int rib, int endTop)> Solve()
 		{
 			if (!isPathValid())
 				throw new Exception();
 
-			if (!_adjacencyList.Any())
-				throw new EmptyAdjacencyListException();
+			var solution = new EulerCycle(_adjacencyList).Solve(_startTop);
 
-			int st = _startTop;
-			int top = st;
+			var res = solution.ToList();
+			res.Remove(res.Last());
 
-			if (!_adjacencyList.ContainsKey(st))
-				throw new NotFoundSuchStartTopException(st);
-
-			while (_adjacencyList.Any())
-			{
-				var rib = _adjacencyList[top].First();
-				_adjacencyList[top].Remove(rib);
-				RemoveEmptyHashSet(top);
-				_temp.Push(rib);
-				top = rib.endTop;
-
-
-				// actionsAtDeadEnd
-				if (!HaveWay(top))
-				{
-					if (top != st)
-						throw new NotValideGraphException();
-					else
-					{
-						while (true)
-						{
-							if (_temp.Count == 1)
-							{
-								_answer.Push(_temp.Pop());
-
-								if (_adjacencyList.Any())
-									throw new NotRelatedGraphException();
-
-								break;
-							}
-
-							_answer.Push(_temp.Pop());
-							st = top = _temp.Peek().endTop;
-
-							if (HaveWay(top))
-								break;
-						}
-					}
-				}
-			}
-			if (_adjacencyList.Any())
-				throw new Exception();
-			else
-			{
-				var res = _answer.ToList();
-				res.Remove(res.Last());
-				return res;
-			}
+			return res;
 		}
 
 		void RemoveEmptyHashSet(int key)
