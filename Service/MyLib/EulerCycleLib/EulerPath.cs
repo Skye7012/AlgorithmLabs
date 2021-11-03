@@ -79,7 +79,6 @@ namespace MyLib.EulerCycleLib
 
 			if (notValidTopsNum == 2)
 			{
-				//var newRib = (cycleStartTop, _adjacencyList.Keys.Max()+1, cycleEndTop);
 				_adjacencyList[cycleEndTop].Add((_adjacencyList.Keys.Max() + 1, cycleStartTop));
 				_startTop = cycleStartTop;
 				return true;
@@ -149,93 +148,6 @@ namespace MyLib.EulerCycleLib
 				return res;
 			}
 		}
-
-
-		//public List<(int rib, int endTop)> Solve(int? startTop = null)
-		//{
-
-		//	if (!_adjacencyList.Any())
-		//		throw new EmptyAdjacencyListException();
-
-
-
-		//	int st = startTop.HasValue ? startTop.Value : _adjacencyList.First().Key;
-		//	int top = st;
-
-		//	if (!_adjacencyList.ContainsKey(st))
-		//		throw new NotFoundSuchStartTopException(st);
-
-		//	while (_adjacencyList.Any())
-		//	{
-		//		var rib = _adjacencyList[top].First();
-		//		_adjacencyList[top].Remove(rib);
-		//		RemoveEmptyHashSet(top);
-		//		_temp.Push(rib);
-		//		top = rib.endTop;
-
-		//		bool pathCritery = (top != st && !_adjacencyList.Any());
-		//		// actionsAtDeadEnd
-		//		if (!HaveWay(top))
-		//		{
-		//			if(pathCritery)
-		//			{
-		//				while (true)
-		//				{
-		//					if (_temp.Count == 1)
-		//					{
-		//						_answer.Push(_temp.Pop());
-
-		//						if (_adjacencyList.Any())
-		//							throw new NotRelatedGraphException();
-
-		//						break;
-		//					}
-
-		//					_answer.Push(_temp.Pop());
-		//					st = top = _temp.Peek().endTop;
-
-		//					if (HaveWay(top))
-		//						break;
-		//				}
-		//			}
-		//			else if (top != st && !pathCritery)
-		//			{
-		//				//if(_adjacencyList.Any())
-		//					throw new NotValideGraphException();
-		//				//else
-		//				//	return _answer.ToList();
-		//			}
-		//			else if(top == st || pathCritery)
-		//			{
-		//				while(true)
-		//				{
-		//					if(_temp.Count == 1)
-		//					{
-		//						_answer.Push(_temp.Pop());
-
-		//						if (_adjacencyList.Any())
-		//							throw new NotRelatedGraphException();
-
-		//						break;
-		//					}
-
-		//					_answer.Push(_temp.Pop());
-		//					st = top = _temp.Peek().endTop;
-
-		//					if (HaveWay(top))
-		//						break;
-		//				}
-		//			}
-		//		}
-		//	}
-		//	if (_adjacencyList.Any())
-		//		throw new Exception();
-		//	else
-		//	{
-		//		var res = _answer.ToList();
-		//		return res;
-		//	}
-		//}
 
 		void RemoveEmptyHashSet(int key)
 		{
