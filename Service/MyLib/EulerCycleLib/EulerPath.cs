@@ -16,6 +16,8 @@ namespace MyLib.EulerCycleLib
 		/// </summary>
 		Dictionary<int, HashSet<(int rib, int endTop)>> _adjacencyList;
 
+		HashSet<(int startTop, int rib, int endTop)> _ribs;
+
 		int _countRibs;
 
 		Stack<(int rib, int endTop)> _temp;
@@ -35,6 +37,7 @@ namespace MyLib.EulerCycleLib
 		public EulerPath(HashSet<(int startTop, int rib, int endTop)> adjacencyList)
 		{
 			_adjacencyList = TupleToAdjacencyList(adjacencyList);
+			_ribs = adjacencyList;
 			_countRibs = CountRibs();
 			_temp = new Stack<(int rib, int endTop)>();
 			_answer = new Stack<(int rib, int endTop)>();
@@ -48,38 +51,57 @@ namespace MyLib.EulerCycleLib
 			int cycleEndTop = 0;
 			int notValidTopsNum = 0;
 
+			List<int> tops = new List<int>();
+
+			var we = _ribs.Select(x => x.startTop).Distinct().ToList();
+			var ew = _ribs.Select(x => x.endTop).Distinct().ToList();
+
+			tops = we.Union(ew).Distinct().ToList();
+
 			var x = _adjacencyList.Keys;
-			foreach (var startTop in _adjacencyList.Keys)
+			foreach (var top in tops)
 			{
-				int stNum = _adjacencyList[startTop].Count;
+				//int stNum = _adjacencyList[startTop].Count;
+				int stNum = _ribs.Where(x => x.startTop == top).Count();
+				int endNum = _ribs.Where(x => x.endTop == top).Count();
 
-				int endNum = 0;
 
-				foreach (var item in _adjacencyList)
-				{
-					foreach (var rib in item.Value)
-					{
-						if (rib.endTop == startTop)
-							endNum++;
-					}
-				}
+				//int endNum = 0;
+
+				//foreach (var item in _adjacencyList)
+				//{
+				//	foreach (var rib in item.Value)
+				//	{
+				//		if (rib.endTop == startTop)
+				//			endNum++;
+				//	}
+				//}
 
 				if (endNum != stNum)
 					if (stNum == endNum + 1)
 					{
-						cycleStartTop = startTop;
+						cycleStartTop = top;
 						notValidTopsNum++;
 					}
 					else if (stNum + 1 == endNum)
 					{
-						cycleEndTop = startTop;
+						cycleEndTop = top;
 						notValidTopsNum++;
 					}
 			}
 
 			if (notValidTopsNum == 2)
 			{
-				_adjacencyList[cycleEndTop].Add((_adjacencyList.Keys.Max() + 1, cycleStartTop));
+				if (_adjacencyList.ContainsKey(cycleEndTop))
+				{
+					_adjacencyList[cycleEndTop].Add((tops.Max() + 1, cycleStartTop));
+
+				}
+				else
+				{
+					var rib = (tops.Max() + 1, cycleStartTop);
+					_adjacencyList.Add(cycleEndTop, new HashSet<(int rib, int endTop)> {rib });
+				}
 				_startTop = cycleStartTop;
 				return true;
 			}
