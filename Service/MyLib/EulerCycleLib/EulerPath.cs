@@ -61,21 +61,9 @@ namespace MyLib.EulerCycleLib
 			var x = _adjacencyList.Keys;
 			foreach (var top in tops)
 			{
-				//int stNum = _adjacencyList[startTop].Count;
 				int stNum = _ribs.Where(x => x.startTop == top).Count();
 				int endNum = _ribs.Where(x => x.endTop == top).Count();
 
-
-				//int endNum = 0;
-
-				//foreach (var item in _adjacencyList)
-				//{
-				//	foreach (var rib in item.Value)
-				//	{
-				//		if (rib.endTop == startTop)
-				//			endNum++;
-				//	}
-				//}
 
 				if (endNum != stNum)
 					if (stNum == endNum + 1)
